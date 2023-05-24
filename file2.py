@@ -44,4 +44,4 @@ print(predictions_ms.head(3))
 forecaster_ms.fit(series=data)
 Y = forecaster_ms.predict(6, levels=items)
 print(Y)
-
+Y.to_csv('predictions.csv')

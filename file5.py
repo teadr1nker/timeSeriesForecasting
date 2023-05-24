@@ -20,7 +20,7 @@ for col in df.columns:
 # df.fillna(method='ffill', inplace=True)
 # print(df)
 
-dfFloat.interpolate(method='linear', limit_direction='backward', inplace=True)
+dfFloat.interpolate(method='ffill', inplace=True)
 #print(dfFloat)
 
 
@@ -32,5 +32,5 @@ for i in range(len(nulls)):
         else:
             df['High Value Customer'] = 'Yes'
 
-print(df)
+dfFloat.to_csv('fillna.csv')
 

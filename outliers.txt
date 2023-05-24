@@ -1,0 +1,28 @@
+ ID
+number of outliers:0
+max outlier value:nan
+min outlier value:nan
+
+
+ Income
+number of outliers:59
+max outlier value:170000
+min outlier value:120000
+
+
+ Children
+number of outliers:0
+max outlier value:nan
+min outlier value:nan
+
+
+ Cars
+number of outliers:60
+max outlier value:4
+min outlier value:4
+
+
+ Age
+number of outliers:26
+max outlier value:89
+min outlier value:68

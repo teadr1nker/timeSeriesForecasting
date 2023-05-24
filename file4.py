@@ -25,6 +25,7 @@ def basketAnalysis(col1, col2):
 
     rules.sort_values(["support", "confidence", "lift"], axis = 0, ascending = False)
     print(rules.head(16))
+    rules.to_csv(f'{col1}_{col2}.csv')
 
 
 basketAnalysis('Order Number', 'Category')

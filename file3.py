@@ -4,9 +4,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def findOutliers(df):
-    q1=df.quantile(0.25)
+    q1=df.quantile(0.3)
 
-    q3=df.quantile(0.75)
+    q3=df.quantile(0.7)
 
     IQR=q3-q1
 
