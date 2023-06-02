@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.cluster import KMeans
 import seaborn as sns
+from xgboost import XGBClassifier
 def toFloat(X):
     XFloat = X.copy()
     for col in X.columns:
@@ -30,6 +31,31 @@ def importance(frame, removeX = ['Purchased Bike', 'ID'], y = 'Purchased Bike', 
     X_test_scaled = ss.transform(X_test)
 
 
+    model = XGBClassifier()
+    model.fit(X_train_scaled, y_train)
+    importances = pd.DataFrame(data={
+    'Attribute': X_train.columns,
+    'Importance': model.feature_importances_})
+
+    # print(importances)
+    plt.bar(importances['Attribute'], importances['Importance'])
+    plt.xticks(rotation=45)
+    plt.title(name)
+    # plt.savefig(name + '.png')
+    plt.show()
+    plt.clf()
+
+def importanceLogRegression(frame, removeX = ['Purchased Bike', 'ID'], y = 'Purchased Bike', name='importance'):
+    f = toFloat(frame)
+    X = f.drop(removeX, axis=1)
+    Y = f[y]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.25, random_state=42)
+    ss = StandardScaler()
+    X_train_scaled = ss.fit_transform(X_train)
+    X_test_scaled = ss.transform(X_test)
+
+
     model = LogisticRegression()
     model.fit(X_train_scaled, y_train)
 
@@ -38,7 +64,7 @@ def importance(frame, removeX = ['Purchased Bike', 'ID'], y = 'Purchased Bike', 
     'Importance': model.coef_[0]
     })
 
-    print(importances)
+    # print(importances)
     plt.bar(importances['Attribute'], importances['Importance'])
     plt.xticks(rotation=45)
     plt.title(name)

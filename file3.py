@@ -29,3 +29,8 @@ for col in df.columns:
         print("max outlier value:" + str(outliers.max()))
 
         print("min outlier value:" + str(outliers.min()))
+
+        plt.boxplot(df[col])
+        plt.title(col)
+        plt.show()
+        plt.clf()
